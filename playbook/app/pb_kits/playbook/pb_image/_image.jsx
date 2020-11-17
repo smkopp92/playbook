@@ -5,6 +5,8 @@ import classnames from 'classnames'
 import { globalProps } from '../utilities/globalProps.js'
 import { buildAriaProps, buildCss, buildDataProps } from '../utilities/props'
 
+const EMPTY_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII='
+
 type ImageProps = {
   alt?: string,
   aria?: object,
@@ -25,7 +27,7 @@ const Image = (props: ImageProps) => {
     id,
     rounded = false,
     size = '',
-    url = '',
+    url,
   } = props
 
   const ariaProps = buildAriaProps(aria)
@@ -37,6 +39,8 @@ const Image = (props: ImageProps) => {
   )
   const dataProps = buildDataProps(data)
 
+  const srcUrl = url === null || url === '' ? EMPTY_IMG : url
+
   return (
     <div>
       <img
@@ -44,10 +48,10 @@ const Image = (props: ImageProps) => {
           {...dataProps}
           alt={alt}
           className={classes}
-          data-src={url}
+          data-src={srcUrl}
           id={id}
           rounded={rounded}
-          src={url}
+          src={srcUrl}
       />
     </div>
   )

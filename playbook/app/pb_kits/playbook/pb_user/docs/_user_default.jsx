@@ -8,7 +8,7 @@ const UserDefault = () => {
       <div>
         <User
             align="center"
-            avatarUrl="https://randomuser.me/api/portraits/women/44.jpg"
+            avatarUrl=""
             name="Anna Black"
             orientation="vertical"
             size="lg"
