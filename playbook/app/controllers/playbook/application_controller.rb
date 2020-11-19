@@ -6,6 +6,7 @@ module Playbook
     helper Playbook::PbKitHelper
     helper Playbook::PbDocHelper
     helper Playbook::PbSampleHelper
+    helper Playbook::ApiHelper
     append_view_path Playbook::Engine.root + "app/pb_kits"
   end
 

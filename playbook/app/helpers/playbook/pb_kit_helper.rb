@@ -11,6 +11,7 @@ module Playbook
       previous = prefix_partial_path_with_controller_namespace
       self.prefix_partial_path_with_controller_namespace = false
       kit = build_view_model(kit.to_s, rails_props(props), &block)
+      puts kit.class
       render(partial: kit, as: :object)
     ensure
       self.prefix_partial_path_with_controller_namespace = previous
