@@ -4,13 +4,22 @@ require_dependency "playbook/application_controller"
 
 module Playbook
   class RenderController < ApplicationController
+    skip_before_action :verify_authenticity_token
     # include PbKitHelper
     # include ApiHelper
     # include ActionController::MimeResponds
 
     # respond_to :html
+    prepend_view_path(File.join(Playbook::Engine.root, "app/pb_kits/playbook"))
+    # def self.controller_path
 
-    def test
+    # end
+    def get
+      json_string = render_to_string(file: "pb_avatar/docs/_avatar_default.html.erb", layout: false)
+      render json: { partial: json_string }
+    end
+
+    def post
       # request = params[:kit]
       user_req = JSON.parse(request.body.string, symbolize_names: true)
       kit_req = user_req[:kit]

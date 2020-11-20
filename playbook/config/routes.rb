@@ -5,7 +5,9 @@ Playbook::Engine.routes.draw do
   get 'kits',               to: "pages#kits"
   get 'visual_guidelines',  to: "pages#visual_guidelines"
 
-  get 'render/', to: "render#test"
+  get 'react_docs/', to: "react_docs#react_docs"
+  post 'render/', to: "render#post"
+  get 'render/', to: "render#get"
 
   get 'kits/:name',       to: "pages#kit_show_rails", as: 'kit_show'
   get 'kits/:name/rails', to: "pages#kit_show_rails", as: 'kit_show_rails'
