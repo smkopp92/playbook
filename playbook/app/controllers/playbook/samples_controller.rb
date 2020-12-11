@@ -5,8 +5,10 @@ require "yaml"
 
 module Playbook
   class SamplesController < ApplicationController
+    include PbDocHelper
     before_action :set_playbook
     before_action :set_sample, only: %i[sample_show_rails sample_show_react]
+    before_action :delete_dark_mode_cookie
 
     layout "playbook/samples"
 
@@ -40,11 +42,9 @@ module Playbook
 
     def set_sample
       sample_yaml = YAML.load_file("#{Playbook::Engine.root}/app/pb_kits/playbook/data/samples.yml")
-      menu = sample_yaml["samples"].map { |link| link.is_a?(Hash) ? link.first.last : link }
-      if menu.flatten.include?(params[:name])
+      if sample_yaml.flatten(2).include?(params[:name])
         @sample = params[:name]
       else
-        # redirect_to root_path, flash: { error: "That kit does not exist" }
         redirect_to "/samples", flash: { error: "That sample does not exist" }
       end
     end

@@ -25,6 +25,28 @@ module Playbook
       end
     end
 
+    def delete_dark_mode_cookie
+      cookies.delete :dark_mode
+    end
+
+    def get_samples(kit)
+      sample_yaml = YAML.load_file("#{Playbook::Engine.root}/app/pb_kits/playbook/data/samples.yml")
+      all_samples = []
+
+      sample_yaml.each do |_category, sample|
+        all_samples.push(sample)
+      end
+
+      output = ""
+      samples_using_kit = []
+      all_samples[0].each do |sample|
+        filepath = "#{Playbook::Engine.root}/app/views/playbook/samples/#{sample}/index.html.erb"
+        output = `grep -l 'pb_rails(\"#{kit}' #{filepath}`
+        samples_using_kit.push(sample) if output.chomp == filepath
+      end
+      samples_using_kit
+    end
+
     def kit_path(kit)
       "#{Playbook::Engine.root}/app/pb_kits/playbook/pb_#{kit}"
     end
@@ -44,23 +66,24 @@ module Playbook
       read_file(filename)
     end
 
-    def pb_kit(kit: "", type: "rails", show_code: true)
+    def pb_kit(kit: "", type: "rails", show_code: true, limit_examples: false)
       @type = type
       @kit_examples = get_kit_examples(kit, type)
+      @limit_examples = limit_examples
       @show_code = show_code
       render partial: "config/kit_example"
     end
 
-    def pb_kits(type: "rails")
+    def pb_kits(type: "rails", limit_examples: false)
       display_kits = []
       kits = get_kits
       kits.each do |kit|
         if kit.is_a?(Hash)
           nav_hash_array(kit).each do |sub_kit|
-            display_kits << render_pb_doc_kit(sub_kit, type, false)
+            display_kits << render_pb_doc_kit(sub_kit, type, false, limit_examples)
           end
         else
-          display_kits << render_pb_doc_kit(kit, type, false)
+          display_kits << render_pb_doc_kit(kit, type, false, limit_examples)
         end
       end
       raw("<div class='pb--docItem'>" + display_kits.join("</div><div class='pb--docItem'>") + "</div>")
@@ -79,10 +102,10 @@ module Playbook
       raw("<div class='pb--docItem'>" + display_kits.join("</div><div class='pb--docItem'>") + "</div>")
     end
 
-    def render_pb_doc_kit(kit, type, code = true)
+    def render_pb_doc_kit(kit, type, code = true, limit_examples)
       title = render_clickable_title(kit, type)
       ui = raw("<div class='pb--docItem-ui'>
-          #{pb_kit(kit: kit, type: type, show_code: code)}</div>")
+          #{pb_kit(kit: kit, type: type, show_code: code, limit_examples: limit_examples)}</div>")
       title + ui
     end
 
@@ -146,6 +169,32 @@ module Playbook
 
     def sub_category_active(kit, link)
       (!kit.nil? && @kit == link)
+    end
+
+    def format_search_hash(kit)
+      label_value_hash = {
+        label: kit.to_s.titleize,
+        value: @type == "react" || @type.nil? ? "/kits/#{kit}/react" : "/kits/#{kit}",
+      }
+      label_value_hash
+    end
+
+    def search_list
+      all_kits = []
+      formatted_kits = []
+      MENU["kits"].each do |kit|
+        if kit.is_a? Hash
+          kit.values[0].each do |sub_kit|
+            all_kits.push(sub_kit)
+          end
+        else
+          all_kits.push(kit)
+        end
+      end
+      all_kits.sort!.each do |sorted_kit|
+        formatted_kits.push(format_search_hash(sorted_kit))
+      end
+      formatted_kits
     end
 
   private

@@ -1,15 +1,5 @@
-// ===========================================
-// Generated file from kit generator.
-//
-// KIT EXAMPLES
-// ===========================================
-
 import WebpackerReact from 'webpacker-react'
 
-//
-// ===========================================
-// ===========================================
-// Generated file from kit generator.
 // KIT EXAMPLES
 import '../pb_form/pb_form_validation'
 import * as Avatar from 'pb_avatar/docs'
@@ -72,6 +62,7 @@ import * as ProgressPills from 'pb_progress_pills/docs'
 import * as ProgressSimple from 'pb_progress_simple/docs'
 import * as ProgressStep from 'pb_progress_step/docs'
 import * as Radio from 'pb_radio/docs'
+import * as RichTextEditor from 'pb_rich_text_editor/docs'
 import * as SectionSeparator from 'pb_section_separator/docs'
 import * as Select from 'pb_select/docs'
 import * as SelectableCard from 'pb_selectable_card/docs'
@@ -98,6 +89,9 @@ import * as Toggle from 'pb_toggle/docs'
 import * as User from 'pb_user/docs'
 import * as UserBadge from 'pb_user_badge/docs'
 import * as WeekdayStacked from 'pb_weekday_stacked/docs'
+
+// REACT COMPONENTS USED ON DOC SITE
+import * as SiteComps from 'docs_components'
 
 WebpackerReact.setup({
   ...Avatar,
@@ -160,12 +154,14 @@ WebpackerReact.setup({
   ...ProgressSimple,
   ...ProgressStep,
   ...Radio,
+  ...RichTextEditor,
   ...SectionSeparator,
   ...Select,
   ...SelectableCard,
   ...SelectableCardIcon,
   ...SelectableIcon,
   ...SelectableList,
+  ...SiteComps,
   ...Source,
   ...StarRating,
   ...StatChange,
