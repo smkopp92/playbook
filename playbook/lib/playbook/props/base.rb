@@ -19,8 +19,8 @@ module Playbook
         value.nil? ? @default : value
       end
 
-      def validate!(input_value)
-        warn("#{kit} Kit: The prop '#{name}' is deprecated and will be removed in a future release!") if deprecated #TODO: add some color for pop
+      def validate!(input_value, replacement = nil)
+        warn("#{kit} Kit: The prop '#{name}' is deprecated and will be removed in#{replacement.present? replacement.to_s : ''} a future release!") if deprecated #TODO: add some color for pop
 
         raise(Playbook::Props::Error, "#{kit} prop '#{name}' of type #{inspect.class} is required and needs a value") if required && input_value.nil?
 

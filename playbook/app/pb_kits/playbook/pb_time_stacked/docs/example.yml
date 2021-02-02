@@ -2,7 +2,11 @@ examples:
 
   rails:
   - time_stacked_default: Default
+  - time_stacked_timestamp: Timestamp String
+  - time_stacked_date_prop_deprecated: Date Prop (deprecated)
 
   react:
   - time_stacked_default: Default
+  - time_stacked_timestamp: Timestamp String
+  - time_stacked_date_prop_deprecated: Date Prop (deprecated)
 

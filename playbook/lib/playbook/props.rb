@@ -17,6 +17,7 @@ require_relative "./props/numeric"
 require_relative "./props/percentage"
 require_relative "./props/proc"
 require_relative "./props/string"
+require_relative "./props/time"
 
 module Playbook
   module Props
@@ -25,7 +26,9 @@ module Playbook
     def initialize(prop_values = {}, &block)
       self.values = { children: block }.merge(Hash(prop_values))
       self.class.props.each do |key, definition|
-        definition.validate! values[key]
+        replacement = values[key]["replaced_by"]
+        prop_has_replacement = values[key]["deprecated"] && replacement.present?
+        definition.validate! values[key], replacement
       end
     end
 

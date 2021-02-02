@@ -14,7 +14,11 @@ module Playbook
       end
 
       chain :that_is_required do
-        @required = true
+        @deprecated = false || @deprecated.nil? || @required = true
+      end
+
+      chain :that_is_deprecated do
+        @deprecated = true
       end
 
       match do |subject_class|
