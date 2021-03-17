@@ -17,6 +17,7 @@ type NavItemProps = {
   id?: string,
   imageUrl: String,
   link: string,
+  linkTag?: React.Node,
   onClick?: EventHandler,
   target?: '_blank' | '_self' | '_parent' | '_top',
   text: string,
@@ -34,11 +35,13 @@ const NavItem = (props: NavItemProps) => {
     id,
     imageUrl,
     link,
+    linkTag,
     onClick = () => {},
     target = '_self',
     text = '',
   } = props
-  const Tag = link ? 'a' : 'div'
+  let Tag = link ? 'a' : 'div'
+  if (linkTag) Tag = linkTag
 
   const activeClass = active === true ? 'active' : ''
   const ariaProps = buildAriaProps(aria)
