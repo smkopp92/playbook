@@ -28,3 +28,4 @@ examples:
   - block_nav: Block
   - block_no_title_nav: Without Title
   - new_tab: Open in a New Tab
+  - link_tag_nav: Bring Your Own Link Tag
