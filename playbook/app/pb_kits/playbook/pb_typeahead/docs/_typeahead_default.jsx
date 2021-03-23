@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Typeahead } from '../../'
+import Highlight from '../components/Highlight'
 
 const options = [
   { label: 'Orange', value: '#FFA500' },
@@ -13,6 +14,7 @@ const options = [
 const TypeaheadDefault = (props) => {
   return (
     <Typeahead
+        formatOptionLabel={Highlight}
         label="Colors"
         options={options}
         {...props}
