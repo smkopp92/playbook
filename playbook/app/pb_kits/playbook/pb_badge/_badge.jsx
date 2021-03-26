@@ -10,10 +10,6 @@ import {
   buildDataProps,
 } from '../utilities/props'
 
-// Hello
-
-// Check
-
 type BadgeProps = {
   aria?: object,
   className?: string,
