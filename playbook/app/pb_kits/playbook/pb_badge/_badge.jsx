@@ -12,6 +12,8 @@ import {
 
 // Hello
 
+// Check
+
 type BadgeProps = {
   aria?: object,
   className?: string,
