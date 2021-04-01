@@ -116,6 +116,7 @@ const Button = (props: ButtonPropTypes) => {
       <a
           {...buttonAria}
           {...dataProps}
+          ariaRole="link"
           className={css}
           href={link}
           id={id}
@@ -128,6 +129,7 @@ const Button = (props: ButtonPropTypes) => {
       <button
           {...buttonAria}
           {...dataProps}
+          ariaRole="button"
           className={css}
           disabled={disabled}
           id={id}
