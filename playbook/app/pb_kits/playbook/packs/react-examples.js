@@ -13,6 +13,7 @@ import * as Badge from 'pb_badge/docs'
 import * as BarGraphDocs from 'pb_bar_graph/docs'
 import * as Body from 'pb_body/docs'
 import * as Breadcrumbs from 'pb_breadcrumbs/docs'
+import * as Breadcrumbsitem from 'pb_breadcrumbsitem/docs'
 import * as Button from 'pb_button/docs'
 import * as ButtonToolbar from 'pb_button_toolbar/docs'
 import * as Caption from 'pb_caption/docs'
@@ -77,6 +78,7 @@ import * as SelectableCardIcon from 'pb_selectable_card_icon/docs'
 import * as SelectableIcon from 'pb_selectable_icon/docs'
 import * as SelectableList from 'pb_selectable_list/docs'
 import * as SiteComps from 'docs_components'
+import * as SiteComps from 'docs_components'
 import * as Source from 'pb_source/docs'
 import * as StarRating from 'pb_star_rating/docs'
 import * as StatChange from 'pb_stat_change/docs'
@@ -106,6 +108,7 @@ WebpackerReact.setup({
   ...BarGraphDocs,
   ...Body,
   ...Breadcrumbs,
+  ...Breadcrumbsitem,
   ...Button,
   ...ButtonToolbar,
   ...Caption,
