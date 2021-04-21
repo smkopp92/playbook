@@ -1,11 +1,12 @@
 /* @flow */
 
 import React from 'react'
-import classnames from 'classnames'
+// import classnames from 'classnames'
 import { buildDataProps } from '../utilities/props'
-import { globalProps } from '../utilities/globalProps.js'
+// import { globalProps } from '../utilities/globalProps.js'
 
 import Icon from '../pb_icon/_icon.jsx'
+import styles from './button.module.scss'
 
 type EventHandler = (SyntheticInputEvent<HTMLInputElement>) => void
 type ButtonPropTypes = {
@@ -33,27 +34,27 @@ type ButtonPropTypes = {
   wrapperClass: string,
 }
 
-const buttonClassName = (props: ButtonPropTypes) => {
-  const {
-    disabled = false,
-    fullWidth = false,
-    loading = false,
-    size = null,
-    type = 'inline',
-    variant = 'primary',
-  } = props
+// const buttonClassName = (props: ButtonPropTypes) => {
+//   const {
+//     disabled = false,
+//     fullWidth = false,
+//     loading = false,
+//     size = null,
+//     type = 'inline',
+//     variant = 'primary',
+//   } = props
 
-  let className = 'pb_button_kit'
+//   let className = 'pb_button_kit'
 
-  className += `${variant !== null ? `_${variant}` : ''}`
-  className += `${type !== null ? `_${type}` : ''}`
-  className += `${size !== null ? `_${size}` : ''}`
-  className += `${fullWidth ? '_block' : ''}`
-  className += disabled ? '_disabled' : '_enabled'
-  className += loading ? '_loading' : ''
+//   className += `${variant !== null ? `_${variant}` : ''}`
+//   className += `${type !== null ? `_${type}` : ''}`
+//   className += `${size !== null ? `_${size}` : ''}`
+//   className += `${fullWidth ? '_block' : ''}`
+//   className += disabled ? '_disabled' : '_enabled'
+//   className += loading ? '_loading' : ''
 
-  return className
-}
+//   return className
+// }
 
 const buttonAriaProps = (props: ButtonPropTypes) => {
   const { aria } = props
@@ -70,7 +71,7 @@ const buttonAriaProps = (props: ButtonPropTypes) => {
 const Button = (props: ButtonPropTypes) => {
   const {
     children,
-    className,
+    // className,
     data = {},
     disabled,
     icon = null,
@@ -82,15 +83,16 @@ const Button = (props: ButtonPropTypes) => {
     text,
     htmlType = 'button',
     value,
+    variant = 'primary',
   } = props
 
   const buttonAria = buttonAriaProps(props)
   const dataProps = buildDataProps(data)
-  const css = classnames(
-    buttonClassName(props),
-    globalProps(props),
-    className
-  )
+  // const css = classnames(
+  //   buttonClassName(props),
+  //   globalProps(props),
+  //   className
+  // )
   const loadingIcon = (
     <div className="loading-icon">
       <Icon
@@ -111,10 +113,12 @@ const Button = (props: ButtonPropTypes) => {
     </span>
   )
 
+  const moduleCss = styles[`pb_button_kit_${variant}`]
+
   return (
     <If condition={link !== null}>
       <a
-          className={css}
+          className={moduleCss}
           href={link}
           id={id}
           target={newWindow ? '_blank' : null}
@@ -127,7 +131,7 @@ const Button = (props: ButtonPropTypes) => {
       </a>
       <Else />
       <button
-          className={css}
+          className={moduleCss}
           disabled={disabled}
           id={id}
           onClick={onClick}

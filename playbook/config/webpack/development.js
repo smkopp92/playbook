@@ -12,6 +12,6 @@ environment.plugins.append(
   })
 )
 
-environment.splitChunks()
+// environment.splitChunks()
 
 module.exports = environment.toWebpackConfig()

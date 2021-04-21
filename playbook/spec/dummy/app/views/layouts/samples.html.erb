@@ -5,7 +5,8 @@
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
         <meta content="user-scalable=0, initial-scale=1.0, minimum-scale=1" name="viewport"/>
-        <%= stylesheet_packs_with_chunks_tag 'main', 'samples/index' %>
+        <%= stylesheet_pack_tag 'main' %>
+        <%= stylesheet_pack_tag 'samples/index' %>
     </head>
     <body>
       <%= render 'layouts/nav'%>
@@ -20,9 +21,15 @@
     </body>
 
     <% if @type == 'react' %>
-      <%= javascript_packs_with_chunks_tag 'application', 'popover_docs', 'samples', 'sample-show' %>
+      <%= javascript_pack_tag 'application' %>
+      <%= javascript_pack_tag 'popover_docs' %>
+      <%= javascript_pack_tag 'samples' %>
+      <%= javascript_pack_tag 'sample-show' %>
     <% else %>
-      <%= javascript_packs_with_chunks_tag 'application', 'rails-examples', 'samples', 'sample-show' %>
+      <%= javascript_pack_tag 'application' %>
+      <%= javascript_pack_tag 'rails-examples' %>
+      <%= javascript_pack_tag 'samples' %>
+      <%= javascript_pack_tag 'sample-show' %>
       <%= yield :pb_js %>
     <% end %>
 </html>

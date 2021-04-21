@@ -1,0 +1,56 @@
+@import "./button_mixins";
+
+$variants: (
+  "primary",
+  "secondary",
+  "link"
+);
+
+@each $variant in $variants {
+  .pb_button_kit_#{$variant} {
+    @include pb_button_variant($variant);
+  }
+}
+
+// .pb_button_kit {
+  // Variants =================
+  // &._primary {
+  //   @include pb_button_primary;
+  // }
+  // &._secondary {
+  //   @include pb_button_secondary;
+  // }
+  // &._link {
+  //   @include pb_button_link;
+  // }
+
+  // Disabled =================
+  // &[class*=_disabled]  {
+  //   @include pb_button_disabled;
+  // }
+
+  // // Block ====================
+  // &[class*=_block]  {
+  //   @include pb_button_block;
+  // }
+
+  // // Loading ==================
+  // &[class*=_loading]  {
+  //   @include pb_button_loading(true);
+  // }
+  // // Dark Variants =============
+  // &.dark  {
+  //   &[class*=_primary]  {
+  //     @include pb_button_primary_dark;
+  //   }
+  //   &[class*=_secondary]  {
+  //     @include pb_button_secondary_dark;
+  //   }
+  //   &[class*=_link]  {
+  //     @include pb_button_link_dark;
+  //   }
+  //   &[class*=_disabled]  {
+  //     @include pb_button_disabled_dark;
+  //   }
+  // }
+// }

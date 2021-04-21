@@ -4,9 +4,13 @@ const { environment } = require('@rails/webpacker')
 const erb = require('./loaders/erb')
 const svg = require('./loaders/svg')
 
-environment.loaders.get('sass')
-  .use.find((item) => item.loader === 'sass-loader')
-  .options.includePaths = [path.resolve(__dirname, 'node_modules/trix')]
+const sass = environment.loaders.get('sass')
+const sassLoader = sass.use.find((item) => item.loader === 'sass-loader')
+
+sassLoader.options.includePaths = [
+  path.resolve(__dirname, '../../node_modules/trix'),
+  path.resolve(__dirname, '../../app/pb_kits/playbook/pb_button'),
+]
 
 environment.loaders.insert('react-svg', svg, { before: 'file' })
 
