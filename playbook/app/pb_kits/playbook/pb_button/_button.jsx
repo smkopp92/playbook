@@ -1,6 +1,6 @@
 /* @flow */
 
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 // import classnames from 'classnames'
 import { buildDataProps } from '../utilities/props'
 // import { globalProps } from '../utilities/globalProps.js'
@@ -114,6 +114,11 @@ const Button = (props: ButtonPropTypes) => {
   )
 
   const moduleCss = styles[`pb_button_kit_${variant}`]
+  const kitRef = React.createRef()
+
+  useLayoutEffect(() => {
+    // console.dir(kitRef.current.className)
+  }, [className])
 
   return (
     <If condition={link !== null}>
@@ -121,6 +126,7 @@ const Button = (props: ButtonPropTypes) => {
           className={moduleCss}
           href={link}
           id={id}
+          ref={kitRef}
           target={newWindow ? '_blank' : null}
           {...buttonAria}
           {...dataProps}
@@ -135,6 +141,7 @@ const Button = (props: ButtonPropTypes) => {
           disabled={disabled}
           id={id}
           onClick={onClick}
+          ref={kitRef}
           type={htmlType}
           value={value}
           {...buttonAria}
