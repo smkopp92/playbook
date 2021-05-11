@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { Select, Button } from '../..'
+import { Button, Select } from '../..'
 
 const SelectErrorToggle = (props) => {
   const [ show, setShow ] = useState(false)
@@ -22,7 +22,7 @@ const SelectErrorToggle = (props) => {
   return (
     <div>
       <Select
-          error={show ? 'Error' : null}
+          error={show ? 'Error: What happen? Someone set up us the bomb.' : null}
           label="Favorite Food"
           name="food"
           options={options}
