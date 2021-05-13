@@ -4,6 +4,8 @@ import React from 'react'
 import classnames from 'classnames'
 import { buildAriaProps, buildDataProps } from '../utilities/props'
 import { globalProps } from '../utilities/globalProps.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 type IconProps = {
   aria?: object,
@@ -85,14 +87,8 @@ const Icon = (props: IconProps) => {
 
   return (
     <>
-      <i
-          {...dataProps}
-          className={classes}
-          id={id}
-      />
-      <span
-          {...ariaProps}
-          hidden
+      <FontAwesomeIcon
+          icon={icon}
       />
     </>
   )
