@@ -4,11 +4,13 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import { map } from 'lodash'
 
-import { buildAriaProps, buildCss, buildDataProps } from '../utilities/props'
+import { buildAriaProps, buildDataProps } from '../utilities/props'
 import { globalProps } from '../utilities/globalProps'
 
 import Image from '../pb_image/_image'
 import OnlineStatus from '../pb_online_status/_online_status'
+
+import styles from './avatar.module.scss'
 
 type AvatarProps = {
   aria?: object,
@@ -44,7 +46,7 @@ const Avatar = (props: AvatarProps) => {
   const dataProps = buildDataProps(data)
   const ariaProps = buildAriaProps(aria)
   const classes = classnames(
-    buildCss('pb_avatar_kit', size),
+    styles.pb_avatar_kit,
     globalProps(props),
     className
   )

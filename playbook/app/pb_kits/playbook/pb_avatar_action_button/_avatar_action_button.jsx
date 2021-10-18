@@ -13,6 +13,8 @@ import { globalProps } from '../utilities/globalProps.js'
 import Avatar from '../pb_avatar/_avatar'
 import Icon from '../pb_icon/_icon'
 
+import styles from './avatar_action_button.module.scss'
+
 type AvatarActionButtonProps = {
   action?: string,
   aria: Object,
@@ -52,7 +54,7 @@ const AvatarActionButton = (props: AvatarActionButtonProps) => {
   const dataProps = buildDataProps(data)
 
   const classes = classnames(buildCss(
-    'pb_avatar_action_button_kit',
+    styles.AvatarActionButton,
     [action],
     [placement],
     [size]),
