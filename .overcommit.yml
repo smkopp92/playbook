@@ -2,8 +2,6 @@
 # extend the default configuration defined in:
 # https://github.com/brigade/overcommit/blob/master/config/default.yml
 
-verify_signatures: false
-
 PreCommit:
   RuboCop:
     enabled: true
