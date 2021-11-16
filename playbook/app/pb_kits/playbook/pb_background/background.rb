@@ -5,7 +5,7 @@ module Playbook
     class Background < Playbook::KitBase
       prop :background_color, type: Playbook::Props::Enum,
                               values: %w[gradient dark light white],
-                              default: "light"
+                              default: "white"
       prop :image_url
 
       prop :tag, type: Playbook::Props::Enum,
